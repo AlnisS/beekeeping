@@ -1,13 +1,18 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://entities/bee/bee_manager.tscn" type="PackedScene" id=1]
 [ext_resource path="res://environment/flower/flower.tscn" type="PackedScene" id=2]
 [ext_resource path="res://environment/hive/hive.tscn" type="PackedScene" id=3]
+[ext_resource path="res://environment/field/field.PNG" type="Texture" id=4]
 
 [node name="Field" type="Node2D"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
+
+[node name="field" type="Sprite" parent="."]
+position = Vector2( -1.08722, -4.81598 )
+scale = Vector2( 0.704963, 0.754645 )
+texture = ExtResource( 4 )
 
 [node name="Flower" parent="." instance=ExtResource( 2 )]
 position = Vector2( -404.356, -173.39 )
@@ -50,5 +55,3 @@ rotation = -0.324631
 position = Vector2( 387.204, 197.696 )
 
 [node name="Hive" parent="." instance=ExtResource( 3 )]
-
-[node name="BeeManager" parent="." instance=ExtResource( 1 )]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://entities/bee/bee.png" type="Texture" id=1]
 [ext_resource path="res://entities/bee/bee_manager.gd" type="Script" id=2]
@@ -7,6 +7,9 @@
 [ext_resource path="res://entities/bee/images/bee_1.PNG" type="Texture" id=5]
 [ext_resource path="res://entities/bee/images/bee_5.PNG" type="Texture" id=6]
 [ext_resource path="res://entities/bee/images/bee_4.png" type="Texture" id=7]
+[ext_resource path="res://entities/bee/ballimages/ball2.png" type="Texture" id=8]
+[ext_resource path="res://entities/bee/ballimages/ball3.png" type="Texture" id=9]
+[ext_resource path="res://entities/bee/ballimages/ball1.png" type="Texture" id=10]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
@@ -19,6 +22,14 @@ animations = [ {
 "loop": true,
 "name": "default",
 "speed": 60.0
+} ]
+
+[sub_resource type="SpriteFrames" id=5]
+animations = [ {
+"frames": [ ExtResource( 10 ), ExtResource( 8 ), ExtResource( 9 ) ],
+"loop": true,
+"name": "default",
+"speed": 20.0
 } ]
 
 [sub_resource type="CapsuleShape2D" id=3]
@@ -48,7 +59,16 @@ position = Vector2( -12.9783, -16.7538 )
 rotation = 1.5708
 scale = Vector2( 0.12, 0.12 )
 frames = SubResource( 2 )
-frame = 4
+frame = 1
+playing = true
+
+[node name="Ball" type="AnimatedSprite" parent="Path2D/BeeLocator"]
+visible = false
+position = Vector2( 12.4001, -0.656353 )
+rotation = 1.5708
+scale = Vector2( 0.0693862, 0.0812917 )
+frames = SubResource( 5 )
+frame = 1
 playing = true
 
 [node name="BeeCollisionArea" type="Area2D" parent="Path2D/BeeLocator"]
@@ -78,6 +98,12 @@ position = Vector2( -2.5, 0 )
 rotation = 1.5708
 shape = SubResource( 4 )
 
+[node name="BackupTimer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
 [connection signal="area_entered" from="Path2D/BeeLocator/BeeCollisionArea" to="." method="_on_BeeCollisionArea_area_entered"]
 [connection signal="area_entered" from="Path2D/BeeLocator/BeeCollectionArea" to="." method="_on_BeeCollectionArea_area_entered"]
+[connection signal="area_exited" from="Path2D/BeeLocator/BeeCollectionArea" to="." method="_on_BeeCollectionArea_area_exited"]
 [connection signal="area_entered" from="Path2D/BeeLocator/BeeHiveReturnArea" to="." method="_on_BeeHiveReturnArea_area_entered"]
+[connection signal="timeout" from="BackupTimer" to="." method="_on_BackupTimer_timeout"]
