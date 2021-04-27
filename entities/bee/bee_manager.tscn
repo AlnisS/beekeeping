@@ -48,7 +48,7 @@ position = Vector2( -12.9783, -16.7538 )
 rotation = 1.5708
 scale = Vector2( 0.12, 0.12 )
 frames = SubResource( 2 )
-frame = 3
+frame = 4
 playing = true
 
 [node name="BeeCollisionArea" type="Area2D" parent="Path2D/BeeLocator"]

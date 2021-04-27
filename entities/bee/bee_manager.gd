@@ -73,3 +73,6 @@ func _on_BeeCollectionArea_area_entered(area):
 
 func _on_BeeHiveReturnArea_area_entered(area):
 	print("hive entered")
+	if area.has_method("register_delivery"):
+		area.register_delivery(flowers.size())
+	flowers = []
