@@ -8,6 +8,8 @@ export var speed = 200
 var started = false #stops the pathfollow setting off without a path
 var drawing = false
 
+var flowers := []
+
 func _ready():
 	add_child(current_line2D)
 
@@ -62,3 +64,12 @@ func _on_BeeCollisionArea_area_entered(area):
 
 func _on_BeeCollectionArea_area_entered(area):
 	print("collection area entered")
+	if !flowers.has(area):
+		flowers.append(area)
+		print("visited new flower")
+	else:
+		print("visited old flower")
+
+
+func _on_BeeHiveReturnArea_area_entered(area):
+	print("hive entered")
