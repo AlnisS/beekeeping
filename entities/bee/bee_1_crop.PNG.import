@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/honey.PNG-eff764bb626d064e1f0be3d7af117549.stex"
+path="res://.import/bee_1_crop.PNG-bc4b0e8d325198a58121f33a79a005e5.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ui/images/honey.PNG"
-dest_files=[ "res://.import/honey.PNG-eff764bb626d064e1f0be3d7af117549.stex" ]
+source_file="res://entities/bee/bee_1_crop.PNG"
+dest_files=[ "res://.import/bee_1_crop.PNG-bc4b0e8d325198a58121f33a79a005e5.stex" ]
 
 [params]
 

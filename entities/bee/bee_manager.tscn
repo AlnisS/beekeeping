@@ -24,7 +24,7 @@ animations = [ {
 "speed": 60.0
 } ]
 
-[sub_resource type="SpriteFrames" id=5]
+[sub_resource type="SpriteFrames" id=3]
 animations = [ {
 "frames": [ ExtResource( 10 ), ExtResource( 8 ), ExtResource( 9 ) ],
 "loop": true,
@@ -32,11 +32,11 @@ animations = [ {
 "speed": 20.0
 } ]
 
-[sub_resource type="CapsuleShape2D" id=3]
+[sub_resource type="CapsuleShape2D" id=4]
 radius = 11.9848
 height = 22.9052
 
-[sub_resource type="CircleShape2D" id=4]
+[sub_resource type="CircleShape2D" id=5]
 
 [node name="BeeManager" type="Node2D"]
 script = ExtResource( 2 )
@@ -59,7 +59,7 @@ position = Vector2( -12.9783, -16.7538 )
 rotation = 1.5708
 scale = Vector2( 0.12, 0.12 )
 frames = SubResource( 2 )
-frame = 1
+frame = 4
 playing = true
 
 [node name="Ball" type="AnimatedSprite" parent="Path2D/BeeLocator"]
@@ -67,8 +67,8 @@ visible = false
 position = Vector2( 12.4001, -0.656353 )
 rotation = 1.5708
 scale = Vector2( 0.0693862, 0.0812917 )
-frames = SubResource( 5 )
-frame = 1
+frames = SubResource( 3 )
+frame = 2
 playing = true
 
 [node name="BeeCollisionArea" type="Area2D" parent="Path2D/BeeLocator"]
@@ -78,7 +78,7 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/BeeLocator/BeeCollisionArea"]
 position = Vector2( -2.5, 0 )
 rotation = 1.5708
-shape = SubResource( 3 )
+shape = SubResource( 4 )
 
 [node name="BeeCollectionArea" type="Area2D" parent="Path2D/BeeLocator"]
 collision_layer = 32
@@ -87,7 +87,7 @@ collision_mask = 32
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/BeeLocator/BeeCollectionArea"]
 position = Vector2( -2.5, 0 )
 rotation = 1.5708
-shape = SubResource( 4 )
+shape = SubResource( 5 )
 
 [node name="BeeHiveReturnArea" type="Area2D" parent="Path2D/BeeLocator"]
 collision_layer = 64
@@ -96,7 +96,7 @@ collision_mask = 64
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/BeeLocator/BeeHiveReturnArea"]
 position = Vector2( -2.5, 0 )
 rotation = 1.5708
-shape = SubResource( 4 )
+shape = SubResource( 5 )
 
 [node name="BackupTimer" type="Timer" parent="."]
 wait_time = 0.2

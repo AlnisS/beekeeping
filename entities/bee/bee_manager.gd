@@ -38,13 +38,16 @@ func _process(delta):
 	last_position = $Path2D/BeeLocator.position
 	
 	if (Input.is_action_just_pressed("draw")
-			and get_local_mouse_position().distance_to($Path2D/BeeLocator.global_position) < 40.0
-			and (state == State.IDLE or state == State.FOLLOWING)):
+			and get_global_mouse_position().distance_to($Path2D/BeeLocator.global_position) < 40.0
+			and (state == State.IDLE or state == State.FOLLOWING)
+			and InputLock.free):
+		InputLock.free = false
 		_start_drawing()
 	if Input.is_action_pressed("draw") and state == State.DRAWING:
 		_continue_drawing()
 	if Input.is_action_just_released("draw") and state == State.DRAWING:
 		_finish_drawing()
+		InputLock.free = true
 	
 	if state == State.FOLLOWING and $Path2D/BeeLocator.unit_offset == 1.0:
 		state = State.IDLE
@@ -55,8 +58,19 @@ func _process(delta):
 	else:
 		$Path2D/BeeLocator/AnimatedSprite.playing = true
 	
+	if $Path2D/BeeLocator/AnimatedSprite.visible:
+		enable_monitoring()
+	
 	if grumpy:
 		$Path2D/BeeLocator/Ball.show()
+
+func disable_monitoring():
+	$Path2D/BeeLocator/BeeCollisionArea.monitoring = false
+	$Path2D/BeeLocator/BeeCollisionArea.monitorable = false
+
+func enable_monitoring():
+	$Path2D/BeeLocator/BeeCollisionArea.monitoring = true
+	$Path2D/BeeLocator/BeeCollisionArea.monitorable = true
 
 func _start_drawing():
 	curve2d = null
