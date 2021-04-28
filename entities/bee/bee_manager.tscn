@@ -59,6 +59,7 @@ position = Vector2( -12.9783, -16.7538 )
 rotation = 1.5708
 scale = Vector2( 0.12, 0.12 )
 frames = SubResource( 2 )
+frame = 1
 playing = true
 
 [node name="Ball" type="AnimatedSprite" parent="Path2D/BeeLocator"]
@@ -67,7 +68,6 @@ position = Vector2( 12.4001, -0.656353 )
 rotation = 1.5708
 scale = Vector2( 0.0693862, 0.0812917 )
 frames = SubResource( 3 )
-frame = 1
 playing = true
 
 [node name="BeeCollisionArea" type="Area2D" parent="Path2D/BeeLocator"]

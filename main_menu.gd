@@ -1,10 +1,11 @@
 extends Node2D
 
 func _ready():
-	AudioServer.set_bus_mute(0, false)
+	pass
+#	AudioServer.set_bus_mute(0, false)
 
 func _on_PlayButton_pressed():
-	AudioServer.set_bus_mute(0, true)
+#	AudioServer.set_bus_mute(0, true)
 #	OS.delay_msec(200)
 	get_tree().change_scene("res://environment/field/field.tscn")
 
