@@ -49,6 +49,11 @@ func _process(delta):
 		print("adding bee")
 		var bee = BEE.instance()
 		bee.disable_monitoring()
+		# really janky way of making the main menu bees scale right
+		# the main menu bees are a bit bigger to be more visible
+		if scale == Vector2(1.5, 1.5):
+			bee.scale = Vector2(2, 2) / 1.5
+		print(bee.scale)
 		bee.get_node("Path2D/BeeLocator/AnimatedSprite").hide()
 		bee._start_drawing()
 		bee.current_line2D.add_point(get_local_mouse_position())
@@ -58,8 +63,8 @@ func _process(delta):
 	queue_next_loop_draw = false
 	
 	
-	if (Input.is_action_just_pressed("draw")):
-		print(get_global_mouse_position())
+#	if (Input.is_action_just_pressed("draw")):
+#		print(get_global_mouse_position())
 	
 	if (Input.is_action_just_pressed("draw")
 			and get_global_mouse_position().distance_to(global_position) < 80.0

@@ -109,7 +109,7 @@ func _on_BeeCollisionArea_area_entered(area):
 		return
 	if state == State.FOLLOWING:
 		state = State.BACKUP
-	$BackupTimer.start()
+		$BackupTimer.start()
 	grumpy = true
 	flowers = []
 

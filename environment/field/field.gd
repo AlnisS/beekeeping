@@ -9,6 +9,9 @@ a peak of %d worker bees.
 High score: %s%s"""
 )
 
+func _ready():
+	AudioServer.set_bus_mute(0, false)
+
 func _on_Hive_gameover(time: float, bee_total: int):
 	var high_score_info = ""
 	
@@ -31,6 +34,8 @@ func format_time(time: float):
 
 
 func _on_Endgame_popup_hide():
+	AudioServer.set_bus_mute(0, true)
+#	OS.delay_msec(200)
 	get_tree().change_scene("res://main_menu.tscn")
 
 
