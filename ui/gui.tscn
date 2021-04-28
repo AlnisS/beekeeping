@@ -30,18 +30,18 @@ __meta__ = {
 margin_left = 20.0
 margin_top = 20.0
 margin_right = 1180.0
-margin_bottom = 124.0
+margin_bottom = 134.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Bars" type="VBoxContainer" parent="TopBar"]
-margin_right = 1075.0
-margin_bottom = 104.0
+margin_right = 1063.0
+margin_bottom = 114.0
 size_flags_horizontal = 3
 
 [node name="HoneyBar" type="HBoxContainer" parent="TopBar/Bars"]
-margin_right = 1075.0
+margin_right = 1063.0
 margin_bottom = 50.0
 
 [node name="MarginContainer" type="MarginContainer" parent="TopBar/Bars/HoneyBar"]
@@ -74,7 +74,7 @@ __meta__ = {
 
 [node name="PollenBar" type="HBoxContainer" parent="TopBar/Bars"]
 margin_top = 54.0
-margin_right = 1075.0
+margin_right = 1063.0
 margin_bottom = 104.0
 
 [node name="MarginContainer" type="MarginContainer" parent="TopBar/Bars/PollenBar"]
@@ -105,12 +105,12 @@ __meta__ = {
 }
 
 [node name="Counters" type="VBoxContainer" parent="TopBar"]
-margin_left = 1079.0
+margin_left = 1067.0
 margin_right = 1160.0
-margin_bottom = 104.0
+margin_bottom = 114.0
 
 [node name="BeeCount" type="HBoxContainer" parent="TopBar/Counters"]
-margin_right = 81.0
+margin_right = 93.0
 margin_bottom = 55.0
 
 [node name="TextureRect" type="TextureRect" parent="TopBar/Counters/BeeCount"]
@@ -127,3 +127,10 @@ margin_right = 81.0
 margin_bottom = 55.0
 custom_fonts/font = SubResource( 1 )
 text = "0"
+
+[node name="TimeLabel" type="Label" parent="TopBar/Counters"]
+margin_top = 59.0
+margin_right = 93.0
+margin_bottom = 114.0
+custom_fonts/font = SubResource( 1 )
+text = "0:00"

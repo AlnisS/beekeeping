@@ -11,6 +11,7 @@ config_version=4
 [application]
 
 config/name="Bee Keeping"
+run/main_scene="res://main_menu.tscn"
 config/icon="res://icon.png"
 
 [autoload]

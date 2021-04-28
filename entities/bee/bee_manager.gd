@@ -63,6 +63,7 @@ func _process(delta):
 	
 	if grumpy:
 		$Path2D/BeeLocator/Ball.show()
+		flowers = []
 
 func disable_monitoring():
 	$Path2D/BeeLocator/BeeCollisionArea.monitoring = false

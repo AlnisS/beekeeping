@@ -2,7 +2,13 @@ extends Area2D
 
 signal hive_update
 
-var honey := 10.0
+signal hive_max_values
+
+const MAX_HONEY = 20.0
+const POLLEN_ROLLOVER = 20.0
+const HONEY_CONSUMPTION = 0.2
+
+var honey := MAX_HONEY
 var pollen := 0.0
 var bee_count := 2
 var bee_total := 2
@@ -14,24 +20,22 @@ const BEE = preload("res://entities/bee/bee_manager.tscn")
 
 var queue_next_loop_draw = false
 
+func _ready():
+	emit_signal("hive_max_values", MAX_HONEY, POLLEN_ROLLOVER)
+
 func _process(delta):
 	
-	honey -= delta * 0.25 * bee_total
+	honey -= delta * HONEY_CONSUMPTION * bee_total
 	time += delta
 	
-	if honey > 10.0:
-		honey = 10.0
+	if honey > MAX_HONEY:
+		honey = MAX_HONEY
 	
-	if pollen >= 10:
-		pollen -= 10
+	if pollen >= POLLEN_ROLLOVER:
+		pollen -= POLLEN_ROLLOVER
 		bee_count += 1
 		bee_total += 1
 		# todo: bee tada
-	
-#	if time - last_time > 1.0:
-#		print("honey: ", honey)
-#		print("pollen: ", pollen)
-#		last_time = time
 	
 	if queue_next_loop_draw and InputLock.free:
 		InputLock.free = false
@@ -56,9 +60,7 @@ func _process(delta):
 			and InputLock.free):
 		queue_next_loop_draw = true
 	
-	
-	
-	emit_signal("hive_update", honey, pollen, bee_count, bee_total)
+	emit_signal("hive_update", honey, pollen, bee_count, bee_total, time)
 	
 
 func register_delivery(flowers: int) -> void:
@@ -69,7 +71,3 @@ func register_delivery(flowers: int) -> void:
 	print("pollen: ", pollen)
 	print("bee_count: ", bee_count)
 	print("bee_total: ", bee_total)	
-	
-	
-
-

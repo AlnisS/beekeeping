@@ -19,12 +19,12 @@ position = Vector2( 600.353, 324.969 )
 texture = SubResource( 1 )
 
 [node name="Flower" parent="." instance=ExtResource( 2 )]
-position = Vector2( 172.425, 242.498 )
+position = Vector2( 156.551, 245.673 )
 rotation = -0.757473
 flower_type = 1
 
 [node name="Flower6" parent="." instance=ExtResource( 2 )]
-position = Vector2( 383.603, 468.117 )
+position = Vector2( 380.428, 477.642 )
 rotation = 0.867429
 
 [node name="Flower9" parent="." instance=ExtResource( 2 )]
@@ -37,26 +37,26 @@ position = Vector2( 641.166, 561.587 )
 flower_type = 1
 
 [node name="Flower2" parent="." instance=ExtResource( 2 )]
-position = Vector2( 723.259, 130.222 )
+position = Vector2( 712.147, 117.523 )
 rotation = 0.541052
 flower_type = 1
 
 [node name="Flower3" parent="." instance=ExtResource( 2 )]
-position = Vector2( 397.715, 244.119 )
+position = Vector2( 383.428, 248.881 )
 rotation = 0.216421
 flower_type = 2
 
 [node name="Flower4" parent="." instance=ExtResource( 2 )]
-position = Vector2( 838.055, 351.805 )
+position = Vector2( 830.118, 377.203 )
 rotation = -0.10821
 flower_type = 2
 
 [node name="Flower5" parent="." instance=ExtResource( 2 )]
-position = Vector2( 991.562, 179.611 )
+position = Vector2( 1010.61, 225.645 )
 rotation = -0.324631
 
 [node name="Flower10" parent="." instance=ExtResource( 2 )]
-position = Vector2( 987.557, 522.665 )
+position = Vector2( 1005.02, 543.301 )
 
 [node name="Hive" parent="." instance=ExtResource( 3 )]
 position = Vector2( 600.353, 324.969 )
@@ -65,4 +65,5 @@ position = Vector2( 600.353, 324.969 )
 position = Vector2( 600.353, 324.969 )
 current = true
 
+[connection signal="hive_max_values" from="Hive" to="CanvasLayer/GUI" method="_on_Hive_hive_max_values"]
 [connection signal="hive_update" from="Hive" to="CanvasLayer/GUI" method="_on_Hive_hive_update"]
