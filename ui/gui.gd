@@ -1,5 +1,7 @@
 extends MarginContainer
 
+signal pause_pressed
+
 var honey := 10.0 setget set_honey
 var honey_disp := 10.0
 var pollen := 0.0 setget set_pollen
@@ -50,3 +52,7 @@ func _on_Hive_hive_update(honey, pollen, bee_count, bee_total, time):
 
 func _on_Hive_hive_max_values(max_honey: float, max_pollen: float):
 	set_max_values(max_honey, max_pollen)
+
+
+func _on_PauseButton_pressed():
+	emit_signal("pause_pressed")

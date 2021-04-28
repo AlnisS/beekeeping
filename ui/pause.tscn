@@ -109,6 +109,7 @@ margin_bottom = 37.0
 text = "Resume"
 
 [connection signal="about_to_show" from="." to="." method="_on_Pause_about_to_show"]
+[connection signal="popup_hide" from="." to="." method="_on_Pause_popup_hide"]
 [connection signal="toggled" from="MarginContainer/VBoxContainer/MusicContainer/MusicButton" to="." method="_on_MusicButton_toggled"]
 [connection signal="toggled" from="MarginContainer/VBoxContainer/SFXContainer/SFXButton" to="." method="_on_SFXButton_toggled"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/RestartContainer/RestartButton" to="." method="_on_RestartButton_pressed"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://ui/images/status_bar_honey.png" type="Texture" id=1]
 [ext_resource path="res://ui/images/status_bar_border.png" type="Texture" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://ui/gui.gd" type="Script" id=7]
 [ext_resource path="res://entities/bee/bee_1_crop.PNG" type="Texture" id=8]
 [ext_resource path="res://ui/Ubuntu-Regular.ttf" type="DynamicFontData" id=9]
+[ext_resource path="res://ui/pause_icon.png" type="Texture" id=10]
 
 [sub_resource type="DynamicFont" id=1]
 size = 48
@@ -30,14 +31,14 @@ __meta__ = {
 margin_left = 20.0
 margin_top = 20.0
 margin_right = 1180.0
-margin_bottom = 134.0
+margin_bottom = 193.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Bars" type="VBoxContainer" parent="TopBar"]
 margin_right = 1063.0
-margin_bottom = 114.0
+margin_bottom = 173.0
 size_flags_horizontal = 3
 
 [node name="HoneyBar" type="HBoxContainer" parent="TopBar/Bars"]
@@ -107,26 +108,29 @@ __meta__ = {
 [node name="Counters" type="VBoxContainer" parent="TopBar"]
 margin_left = 1067.0
 margin_right = 1160.0
-margin_bottom = 114.0
+margin_bottom = 173.0
 
-[node name="BeeCount" type="HBoxContainer" parent="TopBar/Counters"]
+[node name="HBoxContainer" type="HBoxContainer" parent="TopBar/Counters"]
 margin_right = 93.0
 margin_bottom = 55.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="TextureRect" type="TextureRect" parent="TopBar/Counters/BeeCount"]
-margin_right = 50.0
+[node name="Label" type="Label" parent="TopBar/Counters/HBoxContainer"]
+margin_top = 20.0
+margin_right = 34.0
+margin_bottom = 34.0
+size_flags_horizontal = 3
+
+[node name="PauseButton" type="TextureButton" parent="TopBar/Counters/HBoxContainer"]
+margin_left = 38.0
+margin_right = 93.0
 margin_bottom = 55.0
-rect_min_size = Vector2( 50, 50 )
-texture = ExtResource( 8 )
+rect_min_size = Vector2( 55, 55 )
+texture_normal = ExtResource( 10 )
 expand = true
-stretch_mode = 5
-
-[node name="Label" type="Label" parent="TopBar/Counters/BeeCount"]
-margin_left = 54.0
-margin_right = 81.0
-margin_bottom = 55.0
-custom_fonts/font = SubResource( 1 )
-text = "0"
+stretch_mode = 4
 
 [node name="TimeLabel" type="Label" parent="TopBar/Counters"]
 margin_top = 59.0
@@ -134,3 +138,32 @@ margin_right = 93.0
 margin_bottom = 114.0
 custom_fonts/font = SubResource( 1 )
 text = "0:00"
+
+[node name="BeeCount" type="HBoxContainer" parent="TopBar/Counters"]
+margin_top = 118.0
+margin_right = 93.0
+margin_bottom = 173.0
+
+[node name="Label2" type="Label" parent="TopBar/Counters/BeeCount"]
+margin_top = 20.0
+margin_right = 8.0
+margin_bottom = 34.0
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="TopBar/Counters/BeeCount"]
+margin_left = 12.0
+margin_right = 62.0
+margin_bottom = 55.0
+rect_min_size = Vector2( 50, 50 )
+texture = ExtResource( 8 )
+expand = true
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="TopBar/Counters/BeeCount"]
+margin_left = 66.0
+margin_right = 93.0
+margin_bottom = 55.0
+custom_fonts/font = SubResource( 1 )
+text = "0"
+
+[connection signal="pressed" from="TopBar/Counters/HBoxContainer/PauseButton" to="." method="_on_PauseButton_pressed"]

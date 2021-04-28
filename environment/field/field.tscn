@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://ui/gui.tscn" type="PackedScene" id=1]
 [ext_resource path="res://environment/flower/flower.tscn" type="PackedScene" id=2]
@@ -8,16 +8,17 @@
 [ext_resource path="res://ui/images/frame_wood.PNG" type="Texture" id=6]
 [ext_resource path="res://ui/images/game_over.PNG" type="Texture" id=7]
 [ext_resource path="res://ui/music/game_music.mp3" type="AudioStream" id=8]
+[ext_resource path="res://ui/pause.tscn" type="PackedScene" id=9]
 
-[sub_resource type="StyleBoxTexture" id=2]
+[sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 6 )
 region_rect = Rect2( 0, 0, 1400, 650 )
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=2]
 size = 20
 font_data = ExtResource( 4 )
 
-[sub_resource type="StreamTexture" id=1]
+[sub_resource type="StreamTexture" id=3]
 flags = 4
 load_path = "res://.import/field.PNG-2344dfe5daea3dd7f279645bc46aa480.stex"
 
@@ -44,7 +45,7 @@ margin_right = 389.136
 margin_bottom = 268.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_styles/panel = SubResource( 2 )
+custom_styles/panel = SubResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -67,7 +68,7 @@ margin_left = 100.0
 margin_top = 50.0
 margin_right = 477.0
 margin_bottom = 203.0
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 2 )
 text = "Oh no! Your hive ran out of honey!
 
 You survived for {time} and managed
@@ -85,9 +86,11 @@ position = Vector2( 280.684, -55.3032 )
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 7 )
 
+[node name="Pause" parent="CanvasLayer" instance=ExtResource( 9 )]
+
 [node name="field" type="Sprite" parent="."]
 position = Vector2( 600.353, 324.969 )
-texture = SubResource( 1 )
+texture = SubResource( 3 )
 
 [node name="Flower" parent="." instance=ExtResource( 2 )]
 position = Vector2( 156.551, 245.673 )
@@ -141,6 +144,7 @@ stream = ExtResource( 8 )
 autoplay = true
 bus = "Music"
 
+[connection signal="pause_pressed" from="CanvasLayer/GUI" to="CanvasLayer/Pause" method="_on_GUI_pause_pressed"]
 [connection signal="popup_hide" from="CanvasLayer/EndgameContainer/Endgame" to="." method="_on_Endgame_popup_hide"]
 [connection signal="gameover" from="Hive" to="." method="_on_Hive_gameover"]
 [connection signal="hive_max_values" from="Hive" to="CanvasLayer/GUI" method="_on_Hive_hive_max_values"]
