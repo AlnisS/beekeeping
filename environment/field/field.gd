@@ -3,7 +3,8 @@ extends Node2D
 var factory_string = (
 """Oh no! Your hive ran out of honey!
 
-You survived for %s and managed a peak of %d worker bees.
+You survived for %s and managed
+a peak of %d worker bees.
 
 High score: %s%s"""
 )
@@ -15,11 +16,13 @@ func _on_Hive_gameover(time: float, bee_total: int):
 		InputLock.high_score = time
 		high_score_info = "\n\nNew high score!"
 	
-	$Endgame/MarginContainer/Label.text = (
+	$CanvasLayer/EndgameContainer/Endgame/MarginContainer/Label.text = (
 		factory_string % [format_time(time), bee_total, format_time(InputLock.high_score), high_score_info]
 	)
 	
-	$Endgame.popup_centered()
+	$CanvasLayer/EndgameContainer/Endgame.popup_centered()
+	# horrendously janky but it's very close to demo time...
+	$CanvasLayer/EndgameContainer/Endgame.rect_position.y += get_viewport_rect().size.y * 0.1
 	
 
 

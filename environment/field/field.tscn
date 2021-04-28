@@ -1,18 +1,24 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://ui/gui.tscn" type="PackedScene" id=1]
 [ext_resource path="res://environment/flower/flower.tscn" type="PackedScene" id=2]
 [ext_resource path="res://environment/hive/hive.tscn" type="PackedScene" id=3]
 [ext_resource path="res://ui/Ubuntu-Regular.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://environment/field/field.gd" type="Script" id=5]
+[ext_resource path="res://ui/images/frame_wood.PNG" type="Texture" id=6]
+[ext_resource path="res://ui/images/game_over.PNG" type="Texture" id=7]
+
+[sub_resource type="StyleBoxTexture" id=2]
+texture = ExtResource( 6 )
+region_rect = Rect2( 0, 0, 1400, 650 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 20
+font_data = ExtResource( 4 )
 
 [sub_resource type="StreamTexture" id=1]
 flags = 4
 load_path = "res://.import/field.PNG-2344dfe5daea3dd7f279645bc46aa480.stex"
-
-[sub_resource type="DynamicFont" id=2]
-size = 20
-font_data = ExtResource( 4 )
 
 [node name="Field" type="Node2D"]
 script = ExtResource( 5 )
@@ -20,6 +26,63 @@ script = ExtResource( 5 )
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="GUI" parent="CanvasLayer" instance=ExtResource( 1 )]
+
+[node name="EndgameContainer" type="AspectRatioContainer" parent="CanvasLayer"]
+margin_right = 201.0
+margin_bottom = 268.0
+ratio = 2.154
+stretch_mode = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Endgame" type="PopupPanel" parent="CanvasLayer/EndgameContainer"]
+visible = true
+margin_left = -188.136
+margin_right = 389.136
+margin_bottom = 268.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/panel = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/EndgameContainer/Endgame"]
+margin_right = 577.272
+margin_bottom = 268.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/margin_right = 100
+custom_constants/margin_top = 50
+custom_constants/margin_left = 100
+custom_constants/margin_bottom = 65
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="CanvasLayer/EndgameContainer/Endgame/MarginContainer"]
+margin_left = 100.0
+margin_top = 50.0
+margin_right = 477.0
+margin_bottom = 203.0
+custom_fonts/font = SubResource( 3 )
+text = "Oh no! Your hive ran out of honey!
+
+You survived for {time} and managed
+a peak of {bee_total} worker bees.
+
+High score: {high_score}"
+align = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="game_over" type="Sprite" parent="CanvasLayer/EndgameContainer/Endgame/MarginContainer"]
+position = Vector2( 280.684, -55.3032 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 7 )
 
 [node name="field" type="Sprite" parent="."]
 position = Vector2( 600.353, 324.969 )
@@ -72,46 +135,7 @@ position = Vector2( 600.353, 324.969 )
 position = Vector2( 600.353, 324.969 )
 current = true
 
-[node name="Endgame" type="PopupPanel" parent="."]
-margin_right = 348.0
-margin_bottom = 227.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="MarginContainer" type="MarginContainer" parent="Endgame"]
-margin_left = 4.0
-margin_top = 4.0
-margin_right = 344.0
-margin_bottom = 223.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_constants/margin_right = 10
-custom_constants/margin_top = 10
-custom_constants/margin_left = 10
-custom_constants/margin_bottom = 10
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label" type="Label" parent="Endgame/MarginContainer"]
-margin_left = 10.0
-margin_top = 20.0
-margin_right = 330.0
-margin_bottom = 199.0
-custom_fonts/font = SubResource( 2 )
-text = "Oh no! Your hive ran out of honey!
-
-You survived for {time} and managed a peak of {bee_total} worker bees.
-
-High score: {high_score}"
-align = 1
-autowrap = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
+[connection signal="popup_hide" from="CanvasLayer/EndgameContainer/Endgame" to="." method="_on_Endgame_popup_hide"]
 [connection signal="gameover" from="Hive" to="." method="_on_Hive_gameover"]
 [connection signal="hive_max_values" from="Hive" to="CanvasLayer/GUI" method="_on_Hive_hive_max_values"]
 [connection signal="hive_update" from="Hive" to="CanvasLayer/GUI" method="_on_Hive_hive_update"]
-[connection signal="popup_hide" from="Endgame" to="." method="_on_Endgame_popup_hide"]

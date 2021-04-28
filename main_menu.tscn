@@ -177,6 +177,7 @@ custom_fonts/font = SubResource( 3 )
 text = "Credits"
 
 [node name="CreditsContainer" type="AspectRatioContainer" parent="."]
+visible = false
 margin_right = 320.0
 margin_bottom = 299.0
 ratio = 2.154
@@ -229,6 +230,7 @@ __meta__ = {
 }
 
 [node name="TutorialContainer" type="AspectRatioContainer" parent="."]
+visible = false
 margin_right = 1075.0
 margin_bottom = 473.0
 ratio = 2.154
