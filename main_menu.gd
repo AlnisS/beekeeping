@@ -5,7 +5,7 @@ func _on_PlayButton_pressed():
 
 
 func _on_Tutorial_pressed():
-	print("start tutorial")
+	$Tutorial.popup_centered()
 
 
 func _on_Credits_pressed():

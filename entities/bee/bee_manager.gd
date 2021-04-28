@@ -45,7 +45,8 @@ func _process(delta):
 		_start_drawing()
 	if Input.is_action_pressed("draw") and state == State.DRAWING:
 		_continue_drawing()
-	if Input.is_action_just_released("draw") and state == State.DRAWING:
+#	if Input.is_action_just_released("draw") and state == State.DRAWING:
+	if !Input.is_action_pressed("draw") and state == State.DRAWING:
 		_finish_drawing()
 		InputLock.free = true
 	
@@ -104,6 +105,8 @@ func _finish_drawing():
 
 func _on_BeeCollisionArea_area_entered(area):
 	print("ran into other bee")
+	if state == State.RETURNING:
+		return
 	if state == State.FOLLOWING:
 		state = State.BACKUP
 	$BackupTimer.start()

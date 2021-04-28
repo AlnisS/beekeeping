@@ -1,8 +1,8 @@
 extends Area2D
 
 signal hive_update
-
 signal hive_max_values
+signal gameover
 
 export var tick = true
 
@@ -29,6 +29,10 @@ func _process(delta):
 	if tick:
 		honey -= delta * HONEY_CONSUMPTION * bee_total
 		time += delta
+		
+		if honey < 0.0:
+			tick = false
+			emit_signal("gameover", time, bee_total)
 	
 	if honey > MAX_HONEY:
 		honey = MAX_HONEY

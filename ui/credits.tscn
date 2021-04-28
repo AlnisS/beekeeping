@@ -2,7 +2,7 @@
 
 [ext_resource path="res://ui/Ubuntu-Regular.ttf" type="DynamicFontData" id=2]
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="DynamicFont" id=4]
 size = 20
 font_data = ExtResource( 2 )
 
@@ -34,7 +34,7 @@ margin_top = 20.0
 margin_right = 320.0
 margin_bottom = 199.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 4 )
 text = "Credits
 
 Art by Sylvia Jurgens
