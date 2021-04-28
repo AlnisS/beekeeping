@@ -5,8 +5,8 @@ func _on_PlayButton_pressed():
 
 
 func _on_Tutorial_pressed():
-	$Tutorial.popup_centered()
+	$TutorialContainer/Tutorial.popup_centered()
 
 
 func _on_Credits_pressed():
-	$Credits.popup_centered()
+	$CreditsContainer/Credits.popup_centered()

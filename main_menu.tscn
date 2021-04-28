@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://ui/Ubuntu-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://environment/flower/flower.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://environment/hive/hive.tscn" type="PackedScene" id=4]
 [ext_resource path="res://main_menu.gd" type="Script" id=5]
 [ext_resource path="res://ui/title.PNG" type="Texture" id=6]
+[ext_resource path="res://ui/images/frame_wood.PNG" type="Texture" id=7]
 
 [sub_resource type="StreamTexture" id=1]
 flags = 4
@@ -21,9 +22,17 @@ font_data = ExtResource( 1 )
 size = 50
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="StyleBoxTexture" id=7]
+texture = ExtResource( 7 )
+region_rect = Rect2( 0, 0, 1400, 650 )
+
+[sub_resource type="DynamicFont" id=5]
 size = 20
 font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxTexture" id=6]
+texture = ExtResource( 7 )
+region_rect = Rect2( 0, 0, 1400, 650 )
 
 [node name="MainMenu" type="Node2D"]
 script = ExtResource( 5 )
@@ -167,35 +176,46 @@ size_flags_horizontal = 0
 custom_fonts/font = SubResource( 3 )
 text = "Credits"
 
-[node name="Credits" type="PopupPanel" parent="."]
-margin_right = 348.0
-margin_bottom = 227.0
+[node name="CreditsContainer" type="AspectRatioContainer" parent="."]
+margin_right = 320.0
+margin_bottom = 299.0
+ratio = 2.154
+stretch_mode = 3
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MarginContainer" type="MarginContainer" parent="Credits"]
-margin_left = 4.0
-margin_top = 4.0
-margin_right = 344.0
-margin_bottom = 223.0
+[node name="Credits" type="PopupPanel" parent="CreditsContainer"]
+margin_left = -162.023
+margin_right = 482.023
+margin_bottom = 299.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_constants/margin_right = 20
-custom_constants/margin_top = 20
-custom_constants/margin_left = 20
-custom_constants/margin_bottom = 20
+custom_styles/panel = SubResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="Credits/MarginContainer"]
-margin_left = 20.0
-margin_top = 20.0
-margin_right = 320.0
-margin_bottom = 199.0
+[node name="MarginContainer" type="MarginContainer" parent="CreditsContainer/Credits"]
+margin_right = 644.046
+margin_bottom = 299.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 4 )
+size_flags_vertical = 3
+custom_constants/margin_right = 10
+custom_constants/margin_top = 60
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 60
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="CreditsContainer/Credits/MarginContainer"]
+margin_left = 10.0
+margin_top = 60.0
+margin_right = 634.0
+margin_bottom = 239.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 5 )
 text = "Credits
 
 Art by Sylvia Jurgens
@@ -208,46 +228,51 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Tutorial" type="PopupPanel" parent="."]
-margin_right = 348.0
-margin_bottom = 227.0
+[node name="TutorialContainer" type="AspectRatioContainer" parent="."]
+margin_right = 1075.0
+margin_bottom = 473.0
+ratio = 2.154
+stretch_mode = 3
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MarginContainer" type="MarginContainer" parent="Tutorial"]
-margin_left = 4.0
-margin_top = 4.0
-margin_right = 799.0
-margin_bottom = 411.0
+[node name="Tutorial" type="PopupPanel" parent="TutorialContainer"]
+margin_top = -13.0357
+margin_right = 1075.0
+margin_bottom = 486.036
+custom_styles/panel = SubResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="TutorialContainer/Tutorial"]
+margin_right = 1075.0
+margin_bottom = 499.071
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_constants/margin_right = 10
-custom_constants/margin_top = 10
-custom_constants/margin_left = 10
-custom_constants/margin_bottom = 10
+custom_constants/margin_right = 150
+custom_constants/margin_top = 80
+custom_constants/margin_left = 150
+custom_constants/margin_bottom = 90
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="Tutorial/MarginContainer"]
-margin_left = 10.0
-margin_top = 10.0
-margin_right = 785.0
-margin_bottom = 397.0
+[node name="Label" type="Label" parent="TutorialContainer/Tutorial/MarginContainer"]
+margin_left = 150.0
+margin_top = 103.0
+margin_right = 925.0
+margin_bottom = 386.0
 rect_min_size = Vector2( 775, 0 )
-custom_fonts/font = SubResource( 4 )
-text = "Tutorial
-
-Your goal is to lead your hive to survive and grow as long as possible!
+custom_fonts/font = SubResource( 5 )
+text = "Your goal is to lead your hive to survive and grow as long as possible!
 
 Bees visiting flowers collect honey and pollen, and they add it to your hive when they return. However, if they crash into each other, they drop what they are carrying and refuse to work until sent back to the hive!
 
 The hive constantly consumes honey at a rate proportional to the hive's population, and it adds a worker every time it collects enough pollen.
 
-Drag on a bee to give it a path to follow. Drag from the hive to send out a new bee. The title screen is interactive, so give the mechanics a go before starting a game!
-
-Good luck and have fun!"
+Drag on a bee to give it a path to follow. Drag from the hive to send out a new bee. The title screen is interactive, so give the mechanics a go before starting a game!"
 align = 1
 autowrap = true
 __meta__ = {
