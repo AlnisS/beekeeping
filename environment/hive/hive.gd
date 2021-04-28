@@ -4,6 +4,8 @@ signal hive_update
 
 signal hive_max_values
 
+export var tick = true
+
 const MAX_HONEY = 20.0
 const POLLEN_ROLLOVER = 20.0
 const HONEY_CONSUMPTION = 0.2
@@ -24,9 +26,9 @@ func _ready():
 	emit_signal("hive_max_values", MAX_HONEY, POLLEN_ROLLOVER)
 
 func _process(delta):
-	
-	honey -= delta * HONEY_CONSUMPTION * bee_total
-	time += delta
+	if tick:
+		honey -= delta * HONEY_CONSUMPTION * bee_total
+		time += delta
 	
 	if honey > MAX_HONEY:
 		honey = MAX_HONEY

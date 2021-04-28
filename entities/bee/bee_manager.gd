@@ -87,7 +87,7 @@ func _continue_drawing():
 	
 	var latest : Vector2 = current_line2D.points[current_line2D.points.size()-1]
 	
-	if latest.distance_to(get_local_mouse_position()) > 10.0:
+	if latest.distance_to(get_local_mouse_position()) > 5.0:
 		current_line2D.add_point(get_local_mouse_position())
 
 func _finish_drawing():

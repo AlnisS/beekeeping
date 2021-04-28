@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://ui/Ubuntu-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://environment/flower/flower.tscn" type="PackedScene" id=2]
 [ext_resource path="res://entities/bee/bee_manager.tscn" type="PackedScene" id=3]
 [ext_resource path="res://environment/hive/hive.tscn" type="PackedScene" id=4]
 [ext_resource path="res://main_menu.gd" type="Script" id=5]
+[ext_resource path="res://ui/title.PNG" type="Texture" id=6]
 
 [sub_resource type="StreamTexture" id=1]
 flags = 4
@@ -27,10 +28,6 @@ script = ExtResource( 5 )
 position = Vector2( 600.353, 324.969 )
 texture = SubResource( 1 )
 
-[node name="Hive" parent="field" instance=ExtResource( 4 )]
-position = Vector2( 267.043, 148.033 )
-scale = Vector2( 1.5, 1.5 )
-
 [node name="Flower" parent="field" instance=ExtResource( 2 )]
 position = Vector2( 402.483, -126.639 )
 rotation = 0.514872
@@ -38,23 +35,28 @@ scale = Vector2( 1.5, 1.5 )
 
 [node name="Flower2" parent="field" instance=ExtResource( 2 )]
 position = Vector2( 124.904, -149.947 )
-rotation = -0.219911
+rotation = -0.219912
 scale = Vector2( 1.5, 1.5 )
 flower_type = 2
 
 [node name="Flower3" parent="field" instance=ExtResource( 2 )]
-position = Vector2( -90.0568, 188.05 )
-rotation = -0.219911
+position = Vector2( -73.2389, 203.186 )
+rotation = -0.219912
 scale = Vector2( 1.5, 1.5 )
 flower_type = 1
 
+[node name="Hive" parent="field" instance=ExtResource( 4 )]
+position = Vector2( 224.28, 155.16 )
+scale = Vector2( 1.5, 1.5 )
+tick = false
+
 [node name="BeeManager" parent="field" instance=ExtResource( 3 )]
-position = Vector2( -423.283, 202.205 )
+position = Vector2( -495.283, 219.205 )
 rotation = -0.63879
 scale = Vector2( 2, 2 )
 
 [node name="BeeManager4" parent="field" instance=ExtResource( 3 )]
-position = Vector2( 497.938, 209.756 )
+position = Vector2( 497.938, 200.847 )
 rotation = 0.568977
 scale = Vector2( 2, 2 )
 
@@ -68,16 +70,9 @@ position = Vector2( 451.207, -152.417 )
 rotation = -3.76118
 scale = Vector2( 1.5, 1.5 )
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
-margin_right = 598.0
-margin_bottom = 433.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer"]
-margin_right = 598.0
-margin_bottom = 433.0
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_bottom = 1.0
+margin_right = 540.0
 custom_constants/margin_top = 40
 custom_constants/margin_left = 40
 custom_constants/margin_bottom = 40
@@ -85,20 +80,23 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 margin_left = 40.0
 margin_top = 40.0
-margin_right = 598.0
-margin_bottom = 393.0
+margin_right = 540.0
+margin_bottom = 598.0
 custom_constants/separation = 0
 
-[node name="CenterContainer" type="CenterContainer" parent="HBoxContainer/MarginContainer/VBoxContainer"]
-margin_right = 558.0
-margin_bottom = 229.0
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/VBoxContainer"]
+margin_right = 500.0
+margin_bottom = 310.0
 
-[node name="Label" type="Label" parent="HBoxContainer/MarginContainer/VBoxContainer/CenterContainer"]
-margin_right = 558.0
-margin_bottom = 229.0
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/CenterContainer"]
+visible = false
+margin_left = -29.0
+margin_top = 40.0
+margin_right = 529.0
+margin_bottom = 269.0
 custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.823529, 0.486275, 0, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
@@ -106,23 +104,51 @@ text = "Flight of the
 Buzzy Bee"
 align = 1
 
-[node name="HSeparator" type="HSeparator" parent="HBoxContainer/MarginContainer/VBoxContainer"]
-margin_top = 229.0
-margin_right = 558.0
-margin_bottom = 279.0
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/CenterContainer"]
+margin_left = 50.0
+margin_right = 450.0
+margin_bottom = 310.0
+rect_min_size = Vector2( 400, 310 )
+texture = ExtResource( 6 )
+expand = true
+stretch_mode = 5
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer"]
+margin_top = 310.0
+margin_right = 500.0
+margin_bottom = 360.0
 custom_constants/separation = 50
 
-[node name="CenterContainer2" type="CenterContainer" parent="HBoxContainer/MarginContainer/VBoxContainer"]
-margin_top = 279.0
-margin_right = 558.0
-margin_bottom = 353.0
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+margin_top = 360.0
+margin_right = 500.0
+margin_bottom = 528.0
+custom_constants/separation = 20
 
-[node name="PlayButton" type="Button" parent="HBoxContainer/MarginContainer/VBoxContainer/CenterContainer2"]
-margin_left = 216.0
-margin_right = 341.0
+[node name="CenterContainer3" type="CenterContainer" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+margin_right = 500.0
+margin_bottom = 74.0
+
+[node name="Tutorial" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer/CenterContainer3"]
+margin_left = 138.0
+margin_right = 362.0
+margin_bottom = 74.0
+size_flags_horizontal = 0
+custom_fonts/font = SubResource( 3 )
+text = "Tutorial"
+
+[node name="CenterContainer2" type="CenterContainer" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+margin_top = 94.0
+margin_right = 500.0
+margin_bottom = 168.0
+
+[node name="PlayButton" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer/CenterContainer2"]
+margin_left = 187.0
+margin_right = 312.0
 margin_bottom = 74.0
 size_flags_horizontal = 0
 custom_fonts/font = SubResource( 3 )
 text = "Play"
 
-[connection signal="pressed" from="HBoxContainer/MarginContainer/VBoxContainer/CenterContainer2/PlayButton" to="." method="_on_PlayButton_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/CenterContainer3/Tutorial" to="." method="_on_Tutorial_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/CenterContainer2/PlayButton" to="." method="_on_PlayButton_pressed"]
