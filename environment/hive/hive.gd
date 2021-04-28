@@ -41,6 +41,7 @@ func _process(delta):
 		pollen -= POLLEN_ROLLOVER
 		bee_count += 1
 		bee_total += 1
+		$BeeAdded.play()
 		# todo: bee tada
 	
 	if queue_next_loop_draw and InputLock.free:
@@ -76,4 +77,5 @@ func register_delivery(flowers: int) -> void:
 	print("honey: ", honey)
 	print("pollen: ", pollen)
 	print("bee_count: ", bee_count)
-	print("bee_total: ", bee_total)	
+	print("bee_total: ", bee_total)
+	$EnterHive.play()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://ui/Ubuntu-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://environment/flower/flower.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://main_menu.gd" type="Script" id=5]
 [ext_resource path="res://ui/title.PNG" type="Texture" id=6]
 [ext_resource path="res://ui/images/frame_wood.PNG" type="Texture" id=7]
+[ext_resource path="res://ui/music/title_music.mp3" type="AudioStream" id=8]
 
 [sub_resource type="StreamTexture" id=1]
 flags = 4
@@ -280,6 +281,11 @@ autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="TitleMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+autoplay = true
+bus = "Music"
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/CenterContainer2/PlayButton" to="." method="_on_PlayButton_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/CenterContainer3/Tutorial" to="." method="_on_Tutorial_pressed"]

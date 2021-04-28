@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/enter_hive.mp3-515d286e1f8b1408c10e132a20a09a89.mp3str"
+
+[deps]
+
+source_file="res://entities/bee/enter_hive.mp3"
+dest_files=[ "res://.import/enter_hive.mp3-515d286e1f8b1408c10e132a20a09a89.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

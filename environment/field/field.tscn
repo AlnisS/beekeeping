@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://ui/gui.tscn" type="PackedScene" id=1]
 [ext_resource path="res://environment/flower/flower.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://environment/field/field.gd" type="Script" id=5]
 [ext_resource path="res://ui/images/frame_wood.PNG" type="Texture" id=6]
 [ext_resource path="res://ui/images/game_over.PNG" type="Texture" id=7]
+[ext_resource path="res://ui/music/game_music.mp3" type="AudioStream" id=8]
 
 [sub_resource type="StyleBoxTexture" id=2]
 texture = ExtResource( 6 )
@@ -134,6 +135,11 @@ position = Vector2( 600.353, 324.969 )
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 600.353, 324.969 )
 current = true
+
+[node name="FieldMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+autoplay = true
+bus = "Music"
 
 [connection signal="popup_hide" from="CanvasLayer/EndgameContainer/Endgame" to="." method="_on_Endgame_popup_hide"]
 [connection signal="gameover" from="Hive" to="." method="_on_Hive_gameover"]
